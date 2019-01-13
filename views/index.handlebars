@@ -1,1 +1,61 @@
-<p>Success! server connected</p>
+<div class="row" id="burgers">
+    {{!-- Eat the burger --}}
+    <div class="col-sm-12 col-md-6">
+        <h2>Eat the Burger</h2>
+        {{!-- Loop thru and display all NOT eaten --}}
+        {{#each burgers}}
+        {{#unless this.devoured}}
+        <div class="row">
+            <div class="col-6">
+                <p id="ready{{this.id}}">{{burger_name}}</p>
+            </div>
+            <div class="col-6">
+                <form action="/?_method=PUT" method="POST">
+                    <button class="btn btn-dark btn-sm">Devour it!</button>
+                    <input type="hidden" name="id" value="{{this.id}}">
+                </form>
+            </div>
+        </div>
+        {{/unless}}
+        {{/each}}
+
+    </div>
+
+    {{!-- Already ate --}}
+    <div class="col-sm-12 col-md-6">
+        <h2>Already Eaten</h2>
+        {{!-- Loop through and display all eaten --}}
+        {{#each burgers}}
+        {{#if this.devoured}}
+        <div class="row">
+            <div class="col-6">
+                <p id="eaten{{this.id}}">{{burger_name}}</p>
+            </div>
+        </div>
+        {{/if}}
+        {{/each}}
+
+    </div>
+</div>
+<hr />
+
+{{!-- Add a burger --}}
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <h2>Add a Burger</h2>
+        <div class="container">
+            <form action="/" method="POST">
+                <div class="form-group row align-items-center">
+                    <label class="col-sm-12 col-md-2 col-form-label"><strong>Burger Name</strong></label>
+                    <div class="col-sm-12 col-md-9">
+                        <input type="text" class="form-control" name="burgerName" id="burgerName" required="required">
+                    </div>
+                    <div class="col-sm-12 col-md-1">
+                        <button type="submit" class="btn btn-dark">Add it!</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

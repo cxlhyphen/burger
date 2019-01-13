@@ -7,12 +7,27 @@ const burger = require("../models/burger.js");
 
 //Base route
 router.get("/", function(req, res) {
-    res.render("index");
-
-    // burger.selectAll(function (data) {
-    //   res.render("index", {burgers: data});
-    // });
+  burger.selectAll(function(data) {
+    console.log(data);
+    res.render("index", { burgers: data });
   });
+});
+
+//update
+router.put("/burgers/updateOne", function(req, res) {
+  burger.updateOne(req.body.burger_id, function(results) {
+    console.log(results);
+    res.redirect("/");
+  });
+});
+
+//post
+router.post("/burgers/insertOne", function(req, res) {
+  burger.insertOne(req.body.burger_name, function(results) {
+    console.log(results);
+    res.redirect("/");
+  });
+});
 
 // Export routes for server
 module.exports = router;
