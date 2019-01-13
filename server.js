@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const exphbs = require("express-handlebars");
+require("dotenv").config();
 
 //set up express
 const app = express();
@@ -15,7 +16,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 //set up override
-app.use(methodOverride("_method", ["POST", "GET"]));
+app.use(methodOverride("_method"));
 
 //set up handlebars engine
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));

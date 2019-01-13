@@ -7,12 +7,12 @@
         {{#unless this.devoured}}
         <div class="row">
             <div class="col-6">
-                <p id="ready{{this.id}}">{{burger_name}}</p>
+                <p>{{this.id}}. {{burger_name}}</p>
             </div>
             <div class="col-6">
-                <form action="/?_method=PUT" method="POST">
+                <form method="POST" action="/burgers/updateOne?_method=PUT">
+                    <input type="hidden" name="burger_id" type="text" value={{this.id}}>
                     <button class="btn btn-dark btn-sm">Devour it!</button>
-                    <input type="hidden" name="id" value="{{this.id}}">
                 </form>
             </div>
         </div>
@@ -29,7 +29,7 @@
         {{#if this.devoured}}
         <div class="row">
             <div class="col-6">
-                <p id="eaten{{this.id}}">{{burger_name}}</p>
+                <p>{{this.id}}. {{burger_name}}</p>
             </div>
         </div>
         {{/if}}
@@ -44,11 +44,11 @@
     <div class="col-sm-12 col-md-12">
         <h2>Add a Burger</h2>
         <div class="container">
-            <form action="/" method="POST">
+            <form method="POST" action="/burgers/insertOne?_method=POST">
                 <div class="form-group row align-items-center">
                     <label class="col-sm-12 col-md-2 col-form-label"><strong>Burger Name</strong></label>
                     <div class="col-sm-12 col-md-9">
-                        <input type="text" class="form-control" name="burgerName" id="burgerName" required="required">
+                        <input type="text" class="form-control" name="burger_name" required="required" id="enter_text">
                     </div>
                     <div class="col-sm-12 col-md-1">
                         <button type="submit" class="btn btn-dark">Add it!</button>

@@ -1,7 +1,7 @@
 //ORM connection
 const connection = require("./connection.js");
 
-const orm = {
+let orm = {
   //display all entities in table
   selectAll: function(table, cb) {
     connection.query("SELECT * FROM " + table + ";", function(err, result) {
@@ -10,14 +10,14 @@ const orm = {
     });
   },
   updateOne: function(table, condition, cb) {
-    connection.query("UPDATE" + table + "SET devoured=true WHERE id=" + condition + ";", function(err, result) {
+    connection.query("UPDATE " + table + " SET devoured=true WHERE id=" + condition + ";", function(err, result) {
       if (err) throw err;
       cb(result);
     });
   },
 
   insertOne: function(table, val, cb) {
-    connection.query("INSERT INTO" + table + "(burger_name) VALUES ('"+ val +"');", val, function(err, result) {
+    connection.query("INSERT INTO " + table + " (burger_name) VALUES ('"+ val +"');", val, function(err, result) {
       if (err) throw err;
       cb(result);
     });
