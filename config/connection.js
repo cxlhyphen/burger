@@ -1,7 +1,7 @@
 //Stores connection to mySQL database
 //Dependencies
 const mysql = require("mysql");
-require("dotenv").config();
+//require("dotenv").config();
 
 //create connection to db
 const connection;
@@ -13,7 +13,7 @@ if (process.env.JAWSDB_URL) {
     port: 8889,
     host: "localhost",
     user: "root",
-    password: process.env.PASSWORD,
+    password: "root",
     database: "burgers_db"
   });
 }
